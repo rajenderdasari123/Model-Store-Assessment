@@ -1,5 +1,6 @@
 package com.example.modelstoreproject.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.recycler_item.view.*
 
 class VariantProductAdaptor(private val listener: VariantProductClickListener) :
         RecyclerView.Adapter<VariantProductAdaptor.MyViewHolder>() {
-
+    private var selectedItemPosition: Int = 0
     private var listData: List<RecyclerData>? = null
 
     fun setUpdateData(listData: List<RecyclerData>) {
@@ -37,8 +38,14 @@ class VariantProductAdaptor(private val listener: VariantProductClickListener) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(listData?.get(position)!!)
         holder.imageView.setOnClickListener {
+            selectedItemPosition = position
             listener.onVariantProductItemClick(holder.imageView, position)
+            notifyDataSetChanged()
         }
+        if(selectedItemPosition == position)
+            holder.ViewShadow.setBackgroundColor(Color.parseColor("#36ba02"))
+        else
+            holder.ViewShadow.setBackgroundColor(Color.parseColor("#ffffff"))
     }
 
     override fun getItemCount(): Int {
