@@ -3,4 +3,7 @@
     <string name="product_name">Fredt F20 DieselroB</string>
     <string name="txt_product">Tractor</string>
     <string name="txt_related_product">Related Products</string>
+    <string name="txt_count">basket: 0 Items(s)</string>
+    <string name="txt_buy">buy for 66,00$</string>
+    <string name="network_description">Network is not available, please check your internet</string>
 </resources>
